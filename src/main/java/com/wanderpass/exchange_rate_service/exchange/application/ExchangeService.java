@@ -2,7 +2,6 @@ package com.wanderpass.exchange_rate_service.exchange.application;
 
 import com.wanderpass.exchange_rate_service.exchange.domain.entity.ExchangeRate;
 import com.wanderpass.exchange_rate_service.exchange.domain.type.Currency;
-import com.wanderpass.exchange_rate_service.exchange.infrastructure.client.ExchangeRateClient;
 import com.wanderpass.exchange_rate_service.exchange.infrastructure.persistence.ExchangeRateRepository;
 import com.wanderpass.exchange_rate_service.exchange.infrastructure.redis.ExchangeRateCacheRepository;
 import com.wanderpass.exchange_rate_service.exchange.infrastructure.redis.ExchangeRateData;
