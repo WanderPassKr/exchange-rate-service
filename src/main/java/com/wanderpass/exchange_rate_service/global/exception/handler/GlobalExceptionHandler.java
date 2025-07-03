@@ -1,9 +1,9 @@
 package com.wanderpass.exchange_rate_service.global.exception.handler;
 
-import com.wanderpass.exchange_rate_service.exchange.exception.type.BusinessException;
-import com.wanderpass.exchange_rate_service.exchange.exception.type.IntegrationException;
+import com.wanderpass.exchange_rate_service.global.exception.type.BusinessException;
+import com.wanderpass.exchange_rate_service.global.exception.type.IntegrationException;
 
-import com.wanderpass.exchange_rate_service.exchange.exception.type.StatusCode;
+import com.wanderpass.exchange_rate_service.global.exception.type.StatusCode;
 import com.wanderpass.exchange_rate_service.global.exception.dto.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

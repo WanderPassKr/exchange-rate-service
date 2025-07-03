@@ -1,6 +1,6 @@
 package com.wanderpass.exchange_rate_service.exchange.exception.exchange;
 
-import com.wanderpass.exchange_rate_service.exchange.exception.type.StatusCode;
+import com.wanderpass.exchange_rate_service.global.exception.type.StatusCode;
 
 public class ExchangeRateResponseEmptyException extends ExchangeRateApiException {
     public ExchangeRateResponseEmptyException(String message) {

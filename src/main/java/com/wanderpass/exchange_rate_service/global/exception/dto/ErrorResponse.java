@@ -1,6 +1,6 @@
 package com.wanderpass.exchange_rate_service.global.exception.dto;
 
-import com.wanderpass.exchange_rate_service.exchange.exception.type.StatusCode;
+import com.wanderpass.exchange_rate_service.global.exception.type.StatusCode;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

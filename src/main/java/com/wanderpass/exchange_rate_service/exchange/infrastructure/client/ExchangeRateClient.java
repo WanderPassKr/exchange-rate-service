@@ -3,7 +3,7 @@ package com.wanderpass.exchange_rate_service.exchange.infrastructure.client;
 import com.wanderpass.exchange_rate_service.exchange.application.dto.ExchangeRateResponse;
 import com.wanderpass.exchange_rate_service.exchange.config.OpenExchangeProperties;
 import com.wanderpass.exchange_rate_service.exchange.exception.exchange.ExchangeRateApiException;
-import com.wanderpass.exchange_rate_service.exchange.exception.type.StatusCode;
+import com.wanderpass.exchange_rate_service.global.exception.type.StatusCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;

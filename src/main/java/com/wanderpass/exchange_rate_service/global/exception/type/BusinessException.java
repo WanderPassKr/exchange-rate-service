@@ -1,4 +1,4 @@
-package com.wanderpass.exchange_rate_service.exchange.exception.type;
+package com.wanderpass.exchange_rate_service.global.exception.type;
 
 import lombok.Getter;
 

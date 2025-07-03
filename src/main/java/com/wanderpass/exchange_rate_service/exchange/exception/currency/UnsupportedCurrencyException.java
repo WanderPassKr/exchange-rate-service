@@ -1,7 +1,7 @@
 package com.wanderpass.exchange_rate_service.exchange.exception.currency;
 
-import com.wanderpass.exchange_rate_service.exchange.exception.type.BusinessException;
-import com.wanderpass.exchange_rate_service.exchange.exception.type.StatusCode;
+import com.wanderpass.exchange_rate_service.global.exception.type.BusinessException;
+import com.wanderpass.exchange_rate_service.global.exception.type.StatusCode;
 
 public class UnsupportedCurrencyException extends BusinessException {
     public UnsupportedCurrencyException(String currencyCode) {
