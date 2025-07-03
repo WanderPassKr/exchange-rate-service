@@ -1,23 +1,18 @@
 package com.wanderpass.exchange_rate_service.exchange.application;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wanderpass.exchange_rate_service.exchange.application.dto.ExchangeRateResponse;
 import com.wanderpass.exchange_rate_service.exchange.domain.entity.ExchangeRate;
 import com.wanderpass.exchange_rate_service.exchange.domain.type.Currency;
 import com.wanderpass.exchange_rate_service.exchange.exception.exchange.ExchangeRateResponseEmptyException;
-import com.wanderpass.exchange_rate_service.exchange.exception.redis.RedisCacheException;
 import com.wanderpass.exchange_rate_service.exchange.infrastructure.client.ExchangeRateClient;
 import com.wanderpass.exchange_rate_service.exchange.infrastructure.persistence.ExchangeRateBatchRepository;
-import com.wanderpass.exchange_rate_service.exchange.infrastructure.persistence.ExchangeRateRepository;
 
+import com.wanderpass.exchange_rate_service.exchange.infrastructure.redis.ExchangeRateCacheRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +24,8 @@ public class ExchangeRateSyncService {
 
     private final ExchangeRateClient client;
     private final ExchangeRateCalculator calculator;
-    private final ExchangeRateRepository exchangeRateRepository;
     private final ExchangeRateBatchRepository exchangeRateBatchRepository;
-    private final RedisTemplate<String, String> redisTemplate;
-    private final ObjectMapper objectMapper;
+    private final ExchangeRateCacheRepository exchangeRateCacheRepository;
 
     /**
      * 동기 방식으로 OpenAPI 호출 → 이후 로직은 트랜잭션이 보장되는 범위 내에서 처리
@@ -64,14 +57,6 @@ public class ExchangeRateSyncService {
     }
 
     private void cacheToRedis(Currency from, Currency to, BigDecimal rate, LocalDateTime fetchedAt) {
-        try {
-            String key = "exchange_rate:" + from + ":" + to;
-            String value = objectMapper.writeValueAsString(
-                    Map.of("rate", rate, "fetchedAt", fetchedAt.toString())
-            );
-            redisTemplate.opsForValue().set(key, value, Duration.ofHours(1));
-        } catch (JsonProcessingException e) {
-            throw new RedisCacheException("Redis 캐싱 실패");
-        }
+        exchangeRateCacheRepository.save(from, to, rate, fetchedAt);
     }
 }
