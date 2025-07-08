@@ -27,11 +27,12 @@ public class ExchangeService {
     public ConvertResponse convert(ConvertRequest request) {
         Currency from = request.fromCurrency();
         Currency to = request.toCurrency();
-
+        log.info("Converting {} to {}", from, to);
         ExchangeRateData cached = exchangeRateCacheRepository.get(from, to);
 
         // fallback 처리를 위해서 null 반환을 처리해줘야한다.
         if (cached == null) {
+            log.info("Exchange rate from {} to {} not found", from, to);
             ExchangeRate rate = exchangeRateRepository
                     .findTopByFromCurrencyAndToCurrencyOrderByFetchedAtDesc(from, to)
                     .orElseThrow(() ->
