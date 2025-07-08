@@ -1,4 +1,4 @@
-package com.wanderpass.exchange_rate_service.exchange.config;
+package com.wanderpass.exchange_rate_service.exchange.infrastructure.client.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
