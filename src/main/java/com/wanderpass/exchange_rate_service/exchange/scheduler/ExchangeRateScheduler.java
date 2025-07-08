@@ -18,10 +18,7 @@ public class ExchangeRateScheduler {
     private final AtomicInteger failureCount = new AtomicInteger(0);
     private static final int MAX_CONSECUTIVE_FAILURES = 3;
 
-    /**
-     * 매시 5분에 환율 동기화 실행
-     */
-    @Scheduled(cron = "0 5 * * * *")
+    @Scheduled(cron = "${schedule.exchange-rate.cron}")
     public void syncExchangeRatesHourly() {
         String startTime = LocalDateTime.now().toString();
         log.info("=== 환율 동기화 스케줄러 시작 === {}", startTime);

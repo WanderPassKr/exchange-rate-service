@@ -1,7 +1,7 @@
 package com.wanderpass.exchange_rate_service.exchange.infrastructure.client;
 
 import com.wanderpass.exchange_rate_service.exchange.application.dto.ExchangeRateResponse;
-import com.wanderpass.exchange_rate_service.exchange.config.OpenExchangeProperties;
+import com.wanderpass.exchange_rate_service.exchange.infrastructure.client.config.OpenExchangeProperties;
 import com.wanderpass.exchange_rate_service.exchange.exception.exchange.ExchangeRateApiException;
 import com.wanderpass.exchange_rate_service.global.exception.type.StatusCode;
 import lombok.RequiredArgsConstructor;
