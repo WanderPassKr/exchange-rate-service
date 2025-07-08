@@ -19,7 +19,7 @@ public class ExchangeRateController {
     private final ExchangeService exchangeService;
 
     @PostMapping("/convert")
-    public ResponseEntity<ApiResponse<?>> convert(@RequestBody ConvertRequest request) {
+    public ResponseEntity<ApiResponse<ConvertResponse>> convert(@RequestBody ConvertRequest request) {
         ConvertResponse response = exchangeService.convert(request);
         return ResponseEntity.ok(ApiResponse.success(response));
     }
